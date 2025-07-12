@@ -70,6 +70,7 @@ export function HeroSection() {
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
+          speed={1500}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
           className="w-full h-full"
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}

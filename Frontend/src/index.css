@@ -96,6 +96,9 @@ body {
 .w-50{
   width: calc(var(--spacing) * 10);
 }
+.py-8.white.relative {
+    padding-bottom: 70px !important;
+}
 }
 @media screen and (max-width:765px){
   .text-4xl{
@@ -119,5 +122,23 @@ body {
 }
 .text-red-150{
   font-size: 16px !important;
+}
+.flex.overflow-hidden {
+    display: none;
+}
+.overflow-hidden.shadow-lg.h-full.lg\:min-h-\[550px\] {
+    height: 40%;
+}
+.space-y-8.lg\:mt-20.mt-\[50rem\] {
+    margin-top: 210px;
+}
+.py-8.white.relative {
+    padding-bottom: 70px !important;
+}
+.relative.z-10.pt-24.w-full{
+  padding-top:0px;
+}
+.flex-1.md\:basis-\[40\%\].relative.min-h-\[400px\].lg\:min-h-\[600px\] {
+    display: none;
 }
 }

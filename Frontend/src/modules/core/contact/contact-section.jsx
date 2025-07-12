@@ -4,7 +4,7 @@ import location from "../../../assets/location.svg";
 import email from "../../../assets/email.svg";
 import qualityRoof from "../../../assets/contact-roof-repair.svg";
 import contactIcon from "../../../assets/contact-icon.svg";
-import map from "../../../assets/map.webp";
+import map from "../../../assets/map (3).png";
 
 export function ContactSection() {
   return (
