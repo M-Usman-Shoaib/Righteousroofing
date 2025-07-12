@@ -97,3 +97,6 @@ body {
   width: calc(var(--spacing) * 10);
 }
 }
+.w-50{
+  width: calc(var(--spacing) * 10);
+}
