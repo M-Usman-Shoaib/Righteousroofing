@@ -114,14 +114,15 @@ body {
     height: calc(var(--spacing) * 10);
 }
 .w-6 {
-    width: calc(var(--spacing) * 15);
+    width: calc(var(--spacing) * 12);
 }
 .bg-\[\#9B1915\].text-white.p-2.w-70.rounded-lg.flex.items-center.gap-1{
-  width: 390px !important;
+  width: 320px !important;
   padding: 20px;
 }
-.text-red-150{
-  font-size: 16px !important;
+.text-red-150,
+.text-red-100{
+  font-size: 14px !important;
 }
 .flex.overflow-hidden {
     display: none;
@@ -148,11 +149,11 @@ body {
   padding-top: 70px;
 }
 .w-50 {
-    width: calc(var(--spacing) * 20);
+    width: calc(var(--spacing) * 13);
 }
 .w-80{
   margin-left: 15px;
-  width:380px;
+  width:320px;
   padding: 20px;
 }
 .w-full.relative.mt-25 {
