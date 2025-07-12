@@ -131,14 +131,31 @@ body {
 }
 .space-y-8.lg\:mt-20.mt-\[50rem\] {
     margin-top: 210px;
-}
+} 
 .py-8.white.relative {
     padding-bottom: 70px !important;
+    padding-top: 70px !important;
 }
 .relative.z-10.pt-24.w-full{
   padding-top:0px;
 }
 .flex-1.md\:basis-\[40\%\].relative.min-h-\[400px\].lg\:min-h-\[600px\] {
     display: none;
+}
+
+.max-w-6xl.w-full.mx-auto.px-6.grid.lg\:grid-cols-2.gap-12.items-center,
+.py-8.bg-\[\#F3F1F2\]{
+  padding-top: 70px;
+}
+.w-50 {
+    width: calc(var(--spacing) * 20);
+}
+.w-80{
+  margin-left: 15px;
+  width:380px;
+  padding: 20px;
+}
+.w-full.relative.mt-25 {
+    margin-top: 20px;
 }
 }
