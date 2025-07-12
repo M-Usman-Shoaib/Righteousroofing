@@ -292,7 +292,7 @@ export function Navbar() {
             </li>
               <li>
                 <button className="mt-4 bg-[#9B1915] text-white px-5 py-2 rounded flex items-center mx-auto gap-2 font-semibold">
-                  CALL US: 1234567<FaArrowRight />
+                  CALL US: 01785 318 881<FaArrowRight />
                 </button>
               </li>
           </ul>
