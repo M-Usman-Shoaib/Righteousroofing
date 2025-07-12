@@ -10,7 +10,7 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
         </h2>
 
         <form className="space-y-6">
-          onSubmit={async (e) => {
+          {/* onSubmit={async (e) => {
             e.preventDefault();
 
             const formData = {
@@ -39,7 +39,7 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
               alert("Error submitting the form.");
             }
           }}
-
+ */}
           <input
             type="text"
             placeholder="Write your name"
