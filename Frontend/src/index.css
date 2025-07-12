@@ -97,6 +97,27 @@ body {
   width: calc(var(--spacing) * 10);
 }
 }
-.w-50{
-  width: calc(var(--spacing) * 10);
+@media screen and (max-width:765px){
+  .text-4xl{
+    font-size: 30px;
+  }
+  .text-2xl{
+    font-size: 23px;
+  }
+  .pt-25{
+    padding-top:0px;
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 10);
+}
+.w-6 {
+    width: calc(var(--spacing) * 15);
+}
+.bg-\[\#9B1915\].text-white.p-2.w-70.rounded-lg.flex.items-center.gap-1{
+  width: 390px !important;
+  padding: 20px;
+}
+.text-red-150{
+  font-size: 16px !important;
+}
 }
