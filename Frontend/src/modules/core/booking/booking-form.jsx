@@ -33,7 +33,7 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/book-roof", {
+      const res = await fetch("http://168.231.78.182:5000/api/book-roof", {
         // ❗ Change to your production URL if needed
         method: "POST",
         headers: { "Content-Type": "application/json" },
