@@ -83,6 +83,9 @@ body {
 .bg-\[\#9B1915\].text-white.p-2.w-70.rounded-lg.flex.items-center.gap-1 {
     width: 325px;
 }
+.text-center.lg\:text-left.ps-0.lg\:ps-10.flex-1.mx-auto.fade-in-up{
+  padding-left:0px;
+}
 .w-6{
     width: calc(var(--spacing) * 12);
     height: 32px !important;
@@ -112,6 +115,29 @@ body {
   }
   .h-8 {
     height: calc(var(--spacing) * 10);
+}
+h1.text-4xl.md\:text-5xl.font-bold.leading-tight.mt-2.cursor-pointer {
+        font-size: 22px;
+        text-align: left;
+    }
+
+h1.text-2xl.md\:text-3xl.font-bold.leading-tight.mt-2.cursor-pointer {
+    font-size: 15px;
+    text-align: left;
+    font-weight: 400;
+}
+.bg-white\/10.backdrop-blur-sm.p-6.rounded-xl.inline-block{
+padding: 15px;
+}
+button.cursor-pointer.btn-zoom.group.mt-6.px-6.py-3.bg-\[\#9f1313\].text-white.font-semibold.rounded.flex.items-center.gap-2.mx-auto.lg\:mx-0{
+  margin-left:0px;
+  margin-right:0px;
+}
+.flex.flex-col.md\:flex-col.lg\:flex-row.items-center.justify-center.lg\:justify-between.gap-6.h-full.w-full.text-center{
+  gap:0px;
+}
+span.btn-zoom-content{
+  font-size: 15px;
 }
 .w-6 {
     width: calc(var(--spacing) * 12);
@@ -159,4 +185,19 @@ body {
 .w-full.relative.mt-25 {
     margin-top: 20px;
 }
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out both;
+  animation-delay: 0.4s;
 }
