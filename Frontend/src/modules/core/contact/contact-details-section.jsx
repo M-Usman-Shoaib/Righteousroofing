@@ -31,6 +31,7 @@ export function ContactDetailsSection() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <a href="tel:01785318881" className="block">
               <ContactInfoCard
                 icon={
                   <img
@@ -41,7 +42,8 @@ export function ContactDetailsSection() {
                 }
                 title="Call Us"
                 content="01785 318 881"
-              />
+              /></a>
+              <a href="mailto:info@righteousroofingltd.co.uk" className="block">
               <ContactInfoCard
                 icon={
                   <img
@@ -52,7 +54,7 @@ export function ContactDetailsSection() {
                 }
                 title="Email Us"
                 content="info@righteousroofingltd.co.uk"
-              />
+              /></a>
               <ContactInfoCard
                 icon={
                   <img
