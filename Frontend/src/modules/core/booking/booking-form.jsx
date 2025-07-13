@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 
 export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
   const inputClass = `bg-white text-gray-800 border-0 ${inputHeight} placeholder:text-gray-500 w-full ${inputPadding} rounded-[4px]`;
-  
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,12 +11,12 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
     location: "",
     message: "",
   });
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = async (e) => {
 
 
@@ -33,7 +33,7 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
     };
 
     try {
-      const res = await fetch("http://168.231.78.182:5000/api/book-roof", {
+      const res = await fetch("/api/book-roof", {
         // ❗ Change to your production URL if needed
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -61,49 +61,50 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
         </h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
-         <input
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Write your name"
-          className={inputClass}
-          required
-        />
+          <input
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Write your name"
+            className={inputClass}
+            required
+          />
 
-        <input
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email address"
-          className={inputClass}
-          required
-        />
+          <input
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Email address"
+            className={inputClass}
+            required
+          />
+          
+          <input
+            name="date"
+            type="date"
+            placeholder="Inspection date"
+            value={formData.date}
+            onChange={handleChange}
+            className={inputClass}
+            required
+          />
 
-        <input
-          name="date"
-          type="date"
-          value={formData.date}
-          onChange={handleChange}
-          className={inputClass}
-          required
-        />
+          <input
+            name="location"
+            value={formData.location}
+            placeholder="Location"
+            onChange={handleChange}
+            className={inputClass}
+          />
 
-        <input
-          name="location"
-          value={formData.location}
-          placeholder="Location"
-          onChange={handleChange}
-          className={inputClass}
-        />
-
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Your query"
-          className="bg-white text-gray-800 border-0 h-30 p-8 placeholder:text-gray-500 w-full rounded-[4px]"
-        />
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Your query"
+            className="bg-white text-gray-800 border-0 h-30 p-8 placeholder:text-gray-500 w-full rounded-[4px]"
+          />
           <button
             type="submit"
             className="btn-zoom w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-[4px] flex justify-center items-center"
