@@ -136,8 +136,11 @@ button.cursor-pointer.btn-zoom.group.mt-6.px-6.py-3.bg-\[\#9f1313\].text-white.f
 .flex.flex-col.md\:flex-col.lg\:flex-row.items-center.justify-center.lg\:justify-between.gap-6.h-full.w-full.text-center{
   gap:0px;
 }
-span.btn-zoom-content{
-  font-size: 15px;
+.btn-zoom-content{
+  font-size: 13px;
+}
+.relative.w-full.h-\[90vh\]{
+  height: 55vh;
 }
 .w-6 {
     width: calc(var(--spacing) * 12);
