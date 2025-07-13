@@ -4,11 +4,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const pino = require("pino")();
 const expressPino = require("express-pino-logger");
-const passport = require("passport");
-const { Strategy: JwtStrategy, ExtractJwt } = require("passport-jwt");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const nodemailer = require("nodemailer"); // ✅ REQUIRED!
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
@@ -16,21 +14,22 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   session({
-    secret: "hfhfhffhf",
+    secret: "hfhfhffhf", // 🔒 Replace with secure value in production
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
   })
 );
 
-// CORS
+// CORS config
 const corsOptions = {
-  origin: ["http://localhost:5173"],
+  origin: ["http://localhost:5173", process.env.FRONTEND_ORIGIN].filter(Boolean),
+  credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true,
 };
 app.use(cors(corsOptions));
 
@@ -38,7 +37,7 @@ app.use(cors(corsOptions));
 const logger = expressPino({ logger: pino });
 app.use(logger);
 
-// ✅ POST endpoint to receive form data
+// ✅ POST endpoint to receive booking form
 app.post("/api/book-roof", async (req, res) => {
   const { name, email, date, location, message } = req.body;
 
@@ -50,14 +49,14 @@ app.post("/api/book-roof", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "usmanshoaib537@gmail.com",       // 🔁 Replace with your email
-        pass: "your_app_password",          // 🔁 Use an App Password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     const mailOptions = {
-      from: email,
-      to: "usmanshoaib537@gmail.com",           // 🔁 Where to receive the booking
+      from: `"Roof Booking" <${process.env.EMAIL_USER}>`,
+      to: process.env.RECEIVER_EMAIL || process.env.EMAIL_USER,
       subject: "New Roof Booking Request",
       html: `
         <h2>New Roof Booking Submission</h2>
@@ -77,7 +76,7 @@ app.post("/api/book-roof", async (req, res) => {
   }
 });
 
-// MongoDB Connection
+// MongoDB connection
 mongoose
   .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Roofing", {
     useNewUrlParser: true,
@@ -87,11 +86,11 @@ mongoose
     pino.error("MongoDB connection error:", err);
   });
 
-// Optional: serve frontend (if needed)
+// Optional: Serve frontend build (if using React/Vite)
 app.use(express.static(path.join(__dirname, "..", "frontend", "build")));
 
-// Start Server
+// Start server
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   pino.info(`Server is running on port ${port}`);
 });

@@ -1,7 +1,58 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
   const inputClass = `bg-white text-gray-800 border-0 ${inputHeight} placeholder:text-gray-500 w-full ${inputPadding} rounded-[4px]`;
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    date: "",
+    location: "",
+    message: "",
+  });
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  
+  const handleSubmit = async (e) => {
+
+
+    e.preventDefault();
+
+    const formElements = e.target.elements;
+
+    const formData = {
+      name: formElements[0].value,
+      email: formElements[1].value,
+      date: formElements[2].value,
+      location: formElements[3].value,
+      message: formElements[4].value,
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/api/book-roof", {
+        // ❗ Change to your production URL if needed
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Booking submitted!");
+        e.target.reset(); // ✅ Reset form after success
+      } else {
+        alert(data.error || "Something went wrong.");
+      }
+    } catch (err) {
+      console.error("Failed to fetch:", err.message);
+      alert("Error submitting the form.");
+    }
+  };
+
   return (
     <div className="bg-[#9B1915] p-8 lg:p-12 text-white">
       <div className="space-y-6">
@@ -9,70 +60,55 @@ export function BookingForm({ inputHeight = "h-12", inputPadding = "p-8" }) {
           Book Roof solutions
         </h2>
 
-        <form className="space-y-6">
-          {/* onSubmit={async (e) => {
-            e.preventDefault();
+        <form className="space-y-6" onSubmit={handleSubmit}>
+         <input
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Write your name"
+          className={inputClass}
+          required
+        />
 
-            const formData = {
-              name: e.target[0].value,
-              email: e.target[1].value,
-              date: e.target[2].value,
-              location: e.target[3].value,
-              message: e.target[4].value,
-            };
+        <input
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Email address"
+          className={inputClass}
+          required
+        />
 
-            try {
-              const res = await fetch("http://localhost:5000/api/book-roof", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-              });
+        <input
+          name="date"
+          type="date"
+          value={formData.date}
+          onChange={handleChange}
+          className={inputClass}
+          required
+        />
 
-              const data = await res.json();
-              if (res.ok) {
-                alert("Booking submitted!");
-              } else {
-                alert(data.error || "Something went wrong.");
-              }
-            } catch (err) {
-              console.error(err);
-              alert("Error submitting the form.");
-            }
-          }}
- */}
-          <input
-            type="text"
-            placeholder="Write your name"
-            className={inputClass}
-          />
+        <input
+          name="location"
+          value={formData.location}
+          placeholder="Location"
+          onChange={handleChange}
+          className={inputClass}
+        />
 
-          <input
-            type="email"
-            placeholder="Email address"
-            className={inputClass}
-          />
-
-          <input
-            type="text"
-            placeholder="Inspection Date"
-            className={inputClass}
-          />
-
-          <input
-            type="text"
-            placeholder="Your Location"
-            className={inputClass}
-          />
-          <textarea
-            placeholder="Your Query"
-            className={`bg-white text-gray-800 border-0 h-30 placeholder:text-gray-500 w-full ${inputPadding} rounded-[4px]`}
-          />
-
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Your query"
+          className="bg-white text-gray-800 border-0 h-30 p-8 placeholder:text-gray-500 w-full rounded-[4px]"
+        />
           <button
             type="submit"
             className="btn-zoom w-full bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-6 rounded-[4px] flex justify-center items-center"
           >
-            <span className="btn-zoom-content ">Book Now</span>
+            <span className="btn-zoom-content">Book Now</span>
           </button>
         </form>
       </div>
