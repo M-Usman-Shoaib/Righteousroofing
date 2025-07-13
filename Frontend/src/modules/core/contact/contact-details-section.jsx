@@ -4,6 +4,7 @@ import location from "../../../assets/location.svg";
 import email from "../../../assets/email.svg";
 import qualityRoof from "../../../assets/contact-roof-repair.svg";
 import contactIcon from "../../../assets/contact-icon.svg";
+import { BookingForm } from "../booking/booking-form";
 
 export function ContactDetailsSection() {
   return (
@@ -77,11 +78,12 @@ export function ContactDetailsSection() {
             </div>
           </div>
           <div>
-            <QueryForm
+            {/* <QueryForm
               heading="Contact Us"
               bgColor="#F3F1F2"
               headingColor="#000000"
-            />
+            /> */}
+            <BookingForm/>
           </div>
         </div>
       </div>
