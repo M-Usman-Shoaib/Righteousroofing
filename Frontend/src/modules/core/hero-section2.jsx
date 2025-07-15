@@ -59,7 +59,7 @@ export function HeroSection2() {
   const subHeadings = [
     { label: "From minor repairs to full roof replacements" },
     { label: "Built to withstand the British weather" },
-    { label: "Accurate, safe, and hassle-free roof assessments" }
+    { label: "Accurate, and hassle-free roof assessments" }
   ];
   const sub =[
     {label: "quality craftsmanship you can rely on."},
