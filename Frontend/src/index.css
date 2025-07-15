@@ -117,7 +117,7 @@ body {
     height: calc(var(--spacing) * 10);
 }
 h1.text-4xl.md\:text-5xl.font-bold.leading-tight.mt-2.cursor-pointer {
-        font-size: 20px;
+        font-size: 25px;
         text-align: left;
         margin-top:0px;
     }
@@ -125,7 +125,7 @@ h1.text-4xl.md\:text-5xl.font-bold.leading-tight.mt-2.cursor-pointer {
   display: none;
 }
 h1.text-2xl.md\:text-3xl.font-bold.leading-tight.mt-2.cursor-pointer {
-    font-size: 15px;
+    font-size: 14px;
     text-align: left;
     font-weight: 400;
     margin-top:0px;
@@ -133,24 +133,32 @@ h1.text-2xl.md\:text-3xl.font-bold.leading-tight.mt-2.cursor-pointer {
 .bg-white\/10 {
     @supports (color: color-mix(in lab, red, red)) {
         background-color: 
- color-mix(in oklab, var(--color-white) 5%, #00000075);
+ color-mix(in oklab, var(--color-white) 5%, #00000098);
     }
 }
 .hero-section-bg::before {
   background-image: linear-gradient(
       90deg,
-      rgba(0, 0, 0, 0.34) 29.64%,
+      rgba(0, 0, 0, 0) 29.64%,
       rgba(0, 0, 0, 0) 84.51%
     ),
     var(--hero-bg, url("./assets/heroSectionBg.webp"));
 }
 .bg-white\/10.backdrop-blur-sm.p-6.rounded-xl.inline-block{
-padding: 10px;
+padding: 5px;
 border-radius: 5px;
+}
+.text-center.lg\:text-left.ps-0.lg\:ps-10.flex-1.mx-auto.fade-in-up {
+    display: flex;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column !important;
+    gap: 2px;
 }
 button.cursor-pointer.btn-zoom.group.mt-6.px-6.py-3.bg-\[\#9f1313\].text-white.font-semibold.rounded.flex.items-center.gap-2.mx-auto.lg\:mx-0{
   margin-left:0px;
   margin-right:0px;
+  margin-top:10px;
 }
 .flex.flex-col.md\:flex-col.lg\:flex-row.items-center.justify-center.lg\:justify-between.gap-6.h-full.w-full.text-center{
   gap:0px;
@@ -189,6 +197,9 @@ p.text-sm {
 }
 .grid.sm\:grid-cols-2.gap-6 {
     display: flex;
+}
+.bg-white\/10.backdrop-blur-sm.p-6.rounded-xl.mt-3.inline-block {
+    margin-top: 0px;
 }
 .btn-zoom-content{
   font-size: 13px;

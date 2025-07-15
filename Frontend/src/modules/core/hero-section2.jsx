@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { lazy, useRef, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import iconBox1 from "../../assets/icon-box-1.svg";
 import iconBox2 from "../../assets/icon-box-2.svg";
@@ -13,7 +13,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useNavigate } from "react-router-dom";
 
-export function HeroSection() {
+export function HeroSection2() {
   const cardData = [
     {
       title: "Roof Repair",
@@ -47,15 +47,25 @@ export function HeroSection() {
 
   const images = [chimneyRepair, flatRoofing, heroSectionBG];
   const headings = [
-    { label: "Trusted Roofing Experts Across the UK", link: "/service" },
-    { label: "Protect Your Home with a Weatherproof Roof", link: "/service/drone-surveys" },
-    { label: "Cutting-Edge Drone Roof Inspections", link: "/service/skylights-velux" },
+    { label: "Trusted Roofing Experts", link: "/service" },
+    { label: "Protect Your Home with", link: "/service/drone-surveys" },
+    { label: "Cutting-Edge Drone", link: "/service/skylights-velux" },
   ];
+  const head = [
+    { label: "Across the UK",link: "/service"},
+    { label: "a Weatherproof Roof",link:"/service/drone-surveys"},
+    { label: "Inspections", link: "/service/skylights-velux"},
+  ]
   const subHeadings = [
-    { label: "From minor repairs to full roof replacements — quality craftsmanship you can rely on." },
-    { label: "Built to withstand the British weather — durable, secure, and guaranteed." },
-    { label: "Accurate, safe, and hassle-free roof assessments — no ladders needed." }
+    { label: "From minor repairs to full roof replacements" },
+    { label: "Built to withstand the British weather" },
+    { label: "Accurate, safe, and hassle-free roof assessments" }
   ];
+  const sub =[
+    {label: "quality craftsmanship you can rely on."},
+    {label: "durable, secure, and guaranteed."},
+    {label: "no ladders needed."},
+  ]
 const buttonLinks = [
   "/service",
   "/service/drone-surveys",
@@ -74,7 +84,7 @@ const buttonLinks = [
           slidesPerView={1}
           loop={true}
           speed={1500}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 40000, disableOnInteraction: false }}
           className="w-full h-full"
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => {
@@ -110,6 +120,20 @@ const buttonLinks = [
                             </h1>
                           )}
                         </div>
+                        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl inline-block">
+                          {head[activeIndex].link ? (
+                            <h1
+                              className="text-4xl md:text-5xl font-bold leading-tight mt-2 cursor-pointer"
+                            // onClick={() => navigate(headings[activeIndex].link)}
+                            >
+                              {head[idx].label}
+                            </h1>
+                          ) : (
+                            <h1 className="text-4xl md:text-5xl font-bold leading-tight mt-2 cursor-pointer">
+                              {head[idx].label}
+                            </h1>
+                          )}
+                        </div>
                         <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl mt-4 inline-block">
                           {subHeadings[activeIndex].link ? (
                             <h1
@@ -125,7 +149,21 @@ const buttonLinks = [
                             </h1>
                           )}
                         </div>
-                        
+                        <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl mt-3 inline-block">
+                          {sub[activeIndex].link ? (
+                            <h1
+                              className="text-2xl md:text-3xl font-bold leading-tight mt-2 cursor-pointer"
+                            // onClick={() => navigate(subHeadings[activeIndex].link)}
+                            >
+                              {sub[idx].label}
+                            </h1>
+                          ) : (
+                            <h1 className="text-2xl md:text-3xl font-bold leading-tight mt-2 cursor-pointer">
+                              {sub[idx].label}
+                              
+                            </h1>
+                          )}
+                        </div>
                         <button
                           className="cursor-pointer btn-zoom group mt-6 px-6 py-3 bg-[#9f1313] text-white font-semibold rounded flex items-center gap-2 mx-auto lg:mx-0"
                           onClick={() => navigate(buttonLinks[idx])}
