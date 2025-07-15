@@ -205,7 +205,7 @@ p.text-sm {
   font-size: 13px;
 }
 .relative.w-full.h-\[90vh\]{
-  height: 30vh;
+  height: 40vh;
 }
 .w-6 {
     width: calc(var(--spacing) * 12);
