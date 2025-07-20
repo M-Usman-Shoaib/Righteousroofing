@@ -6,10 +6,14 @@ const pino = require("pino")();
 const expressPino = require("express-pino-logger");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const Service = require("./models/service"); // Adjust path as necessary
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
+
+app.use("/images", express.static(path.join(__dirname, "images")));
+
 
 // Middleware
 app.use(express.json());
@@ -78,9 +82,68 @@ app.post("/api/book-roof", async (req, res) => {
   }
 });
 
+// ========= ✅ SERVICE ROUTES ========= //
+
+// POST: Add new service
+app.post("/api/services", async (req, res) => {
+  try {
+    const newService = new Service(req.body);
+    const saved = await newService.save();
+    res.status(201).json(saved);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// GET: All services
+app.get("/api/services", async (req, res) => {
+  try {
+    const services = await Service.find();
+    res.status(200).json(services);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GET: Single service by ID
+app.get("/api/services/:id", async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.id);
+    if (!service) return res.status(404).json({ message: "Service not found" });
+    res.status(200).json(service);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// DELETE: Service by ID
+app.delete("/api/services/:id", async (req, res) => {
+  try {
+    const deleted = await Service.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Service not found" });
+    res.status(200).json({ message: "Deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// PUT: Update service by ID
+app.put("/api/services/:id", async (req, res) => {
+  try {
+    const updated = await Service.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updated) return res.status(404).json({ message: "Service not found" });
+    res.status(200).json(updated);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 // MongoDB connection
 mongoose
-  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Roofing", {
+  .connect("mongodb+srv://vafabe1143:HIz1q3VL1HQ6DGK1@cluster0.80dj8ba.mongodb.net/Roofing", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

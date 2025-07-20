@@ -1,28 +1,70 @@
 const mongoose = require("mongoose");
 
 const ServiceSchema = new mongoose.Schema({
-  image: {
-    type: String,
-    required: true, // URL or path to image
-  },
-  heading: {
+  title: {
     type: String,
     required: true,
   },
-  subHeading: {
+  heroImage: {
     type: String,
     required: true,
   },
-  headingDetails: {
+  heroImageAlt: {
+    type: String,
+    required: false,
+  },
+  mainTitle: {
     type: String,
     required: true,
   },
-  subHeadingDetails: {
+  description: {
     type: String,
     required: true,
   },
-  faqs: [
+  extraTitle: {
+    type: String,
+    required: true,
+  },
+  extraDescription: {
+    type: String,
+    required: true,
+  },
+  serviceCards: [
     {
+      title: {
+        type: String,
+        required: true,
+      },
+      icon: {
+        type: String,
+        required: true,
+      },
+      description: {
+        type: String,
+        required: true,
+      },
+      isDark: {
+        type: Boolean,
+        default: false,
+      },
+    },
+  ],
+  sidebarServices: [
+    {
+      type: String,
+      required: true,
+    }
+  ],
+  activeService: {
+    type: String,
+    required: true,
+  },
+  faqData: [
+    {
+      id:{
+        type: Number,
+        required: true,
+      },
       question: {
         type: String,
         required: true,
@@ -31,21 +73,10 @@ const ServiceSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-    },
-  ],
-  extras: {
-    title: {
-      type: String,
-      required: true,
-    },
-    details: {
-      type: String,
-      required: true,
-    },
-  },
+    }
+  ]
 });
 
 const Service = mongoose.model("Service", ServiceSchema);
 
 module.exports = Service;
-
